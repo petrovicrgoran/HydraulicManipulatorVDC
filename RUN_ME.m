@@ -7,8 +7,8 @@
 % 114X, https://doi.org/10.1016/j.mechmachtheory.2021.104680.             %
 % (https://www.sciencedirect.com/science/article/pii/S0094114X21004092)   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The CAD files used were kindly donated by Dr Janne Koivumäki. This fact %
-% and feedback provision are highly appreciated by the simulation author. % 
+% Dr Janne Koivumäki kindly donated the CAD files used. The simulation    %
+% author highly appreciates this fact and feedback provision.             % 
 % Check Dr Koivumäki's publications at:                                   %            
 % https://scholar.google.com/citations?user=Llrx-nsAAAAJ                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,9 +25,9 @@ close all
 % Demonstrated operating modes have following numeric identifiers:
 % 0 - Cartesian position control,
 % ANY VALUE - Joint-space control.
-MODE = 1;
+MODE = 0;
 % Choose whether the friction force should be exerted to linear actuator
-% pistons on simulation. (No reason not to.)
+% pistons in simulation. (No reason not to.)
 settings.actuatorFrictionON = 1;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Controller feedback gains and sample time.                              %           
@@ -52,8 +52,8 @@ controller.lamxT2 = 3;
 controller.lamX = 6;
 controller.lamY = 6;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Encoder and pressure measurements are filtered with 2nd order low-pass  %
-% filters. Their cut-off frequencies are defined here. Similar happens    %
+% Encoder and pressure measurements are filtered with 2nd-order low-pass  %
+% filters. Their cut-off frequencies are defined here. The same happens   %
 % for filters after numerical derivatives of required velocities and      %
 % required piston forces. More details can be found from the              %
 % 'init2ndOrderLowPassFilter.m' function.                                 %
@@ -68,10 +68,10 @@ filtPres.cutOffFrequency = 24*2*pi;
 filtDV.cutOffFrequency = 8*2*pi;
 filtDF.cutOffFrequency = 8*2*pi;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Uncertainty factor allow supplying non-ideal values of physical         %
-% quantities to the VDC controller. Setting them to 1 and the controller  %
-% will 'know' all the parameters ideally. More details can be found from  %
-% the supplied 'initializeParameterUpdate.m' file.                        %
+% Uncertainty factors allow supplying non-ideal values of physical         
+% quantities to the VDC controller. Setting them to 1, the controller  
+% will ideally know all the parameters. More details can be found in  
+% the supplied 'initializeParameterUpdate.m' file.                
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 update.inertiaUncertainty = 0.9;
 update.cyl1Uncertainty = 0.95;
